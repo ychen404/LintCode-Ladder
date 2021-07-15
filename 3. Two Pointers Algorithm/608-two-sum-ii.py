@@ -1,21 +1,18 @@
 class Solution:
     """
-    @param nums: an array of Integer
-    @param target: target = nums[index1] + nums[index2]
-    @return: [index1 + 1, index2 + 1] (index1 < index2)
+    @param nums {int[]} n array of Integer
+    @param target {int} = nums[index1] + nums[index2]
+    @return {int[]} [index1 + 1, index2 + 1] (index1 < index2)
     """
     def twoSum(self, nums, target):
-        # write your code here
-        if not nums:
-            return None
-
-        for slow in range(len(nums) - 1):
-            for fast in range(slow + 1, len(nums)):
-                if nums[slow] + nums[fast] == target:
-                    return [slow + 1, fast + 1]
-                elif nums[slow] + nums[fast] < target:
-                    continue
-                else:
-                    break
-        return None
-
+        # Write your code here
+        l, r = 0, len(nums)-1
+        while l < r:
+            value = nums[l] + nums[r]
+            if value == target:
+                return [l+1, r+1]
+            elif value < target:
+                l += 1
+            else:
+                r -= 1
+        return []
